@@ -1,0 +1,9 @@
+ &PACKAGES
+  useDIAGNOSTICS=.TRUE.,
+  useLAYERS=.FALSE.,
+  useRBCS=.TRUE.,
+  usePTRACERS=.TRUE.,
+  useMNC=.TRUE.,
+  useKPP=.TRUE.,
+  useGCHEM=.TRUE.,
+ &

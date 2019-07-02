@@ -1,0 +1,112 @@
+# Diagnostic Package Choices
+#--------------------
+#  dumpAtLast (logical): always write output at the end of simulation (default=F)
+#  diag_mnc   (logical): write to NetCDF files (default=useMNC)
+#--for each output-stream:
+#  fileName(n) : prefix of the output file name (max 80c long) for outp.stream n
+#  frequency(n):< 0 : write snap-shot output every |frequency| seconds
+#               > 0 : write time-average output every frequency seconds
+#  timePhase(n)     : write at time = timePhase + multiple of |frequency|
+#    averagingFreq  : frequency (in s) for periodic averaging interval
+#    averagingPhase : phase     (in s) for periodic averaging interval
+#    repeatCycle    : number of averaging intervals in 1 cycle
+#  levels(:,n) : list of levels to write to file (Notes: declared as REAL)
+#                when this entry is missing, select all common levels of this list
+#  fields(:,n) : list of selected diagnostics fields (8.c) in outp.stream n
+#                (see "available_diagnostics.log" file for the full list of diags)
+#  missing_value(n) : missing value for real-type fields in output file "n"
+#  fileFlags(n)     : specific code (8c string) for output file "n"
+#--------------------
+# DIAGNOSTICS FOR DIFFUSIVITY TENSOR
+# &diagnostics_list
+#  diag_mnc=.TRUE.,
+#  filename(1) = 'KPPboundary',
+#   frequency(1) = -86400.,
+#   fields(1:2,1) = 'KPPhbl','MXLDEPTH',
+#  filename(2) = 'KPPboundary2',
+#   frequency(2) = -86400.,
+#   fields(1:3,2) = 'KPPviscA','KPPdiffT','KPPRi',
+# &
+ &DIAGNOSTICS_LIST
+  diag_mnc=.FALSE.,
+  fields(1:8,1) = 'UVEL','VVEL','WVEL','PHIHYD','THETA',
+                  'TRAC03','TRAC22','TRAC23',
+    filename(1) = 'Snap15D',
+   timephase(1) = 0.,
+   frequency(1) = -1296000.,
+  fields(1:5,2) = 'UVEL','VVEL','WVEL','PHIHYD','THETA',
+    filename(2) = 'MOMtave',
+   frequency(2) = 86400.,
+#  fields(1:1,2) = 'WVEL',
+#    filename(2) = 'zMom_tave',
+#   timephase(2) = 0.,
+#   frequency(2) = 86400.,
+  fields(1:1,3) = 'KPPhbl',
+    filename(3) = 'KPPhbl',
+   frequency(3) = 86400.,
+#  fields(1:1,4) = 'PHIHYD',
+#    filename(4) = 'HydroPresPot',
+#   frequency(4) = 86400.,
+#  fields(1:3,3) = 'KPPviscA','KPPdiffS','KPPdiffT',
+#    filename(3) = 'KPPcoeff',
+#   frequency(3) = 86400.,
+#  fields(1:8,6) = 'THETA','ADVx_TH','ADVy_TH','ADVr_TH',
+#                  'DFxE_TH','DFyE_TH','DFrE_TH','DFrI_TH',
+#    filename(6) = 'PotTtave',
+#   frequency(6) = 86400.,
+  fields(1:8,4) = 'TRAC03','VTRAC03','WTRAC03',
+                  'ADVyTr03','ADVrTr03','DFrITr03','KPPgTr03',
+                  'FeTbgc',
+    filename(4) = 'FeTtave',
+   frequency(4) = 86400.,
+#  fields(1:5,3) = 'TRAC07','UTRAC07','VTRAC07','WTRAC07','DFrITr07',
+#    filename(3) = 'DOFe_tave',
+#   frequency(3) = 86400.,
+#  fields(1:5,4) = 'TRAC10','UTRAC10','VTRAC10','WTRAC10','DFrITr10',
+#    filename(4) = 'Z1Fe_tave',
+#   frequency(4) = 86400.,
+#  fields(1:5,5) = 'TRAC14','UTRAC14','VTRAC14','WTRAC14','DFrITr14',
+#    filename(5) = 'Z2Fe_tave',
+#   frequency(5) = 86400.,
+#  fields(1:5,6) = 'TRAC18','UTRAC18','VTRAC18','WTRAC18','DFrITr18',
+#    filename(6) = 'POFe_tave',
+#   frequency(6) = 86400.,
+#  fields(1:1,3) = 'TRAC03'
+#    filename(3) = 'FeTsnap_30d',
+#   timePhase(3) = 0.,
+#   frequency(3) = -2592000.,
+#  fields(1:7,4) = 'TRAC08','VTRAC08','WTRAC08','ADVyTr08','ADVrTr08','DFrITr08','KPPgTr08',
+#    filename(4) = 'Z1Ptave',
+#   frequency(4) = 86400.,
+#  fields(1:7,5) = 'TRAC12','VTRAC12','WTRAC12','ADVyTr12','ADVrTr12','DFrITr12','KPPgTr12',
+#    filename(5) = 'Z2Ptave',
+#   frequency(5) = 86400.,
+#  fields(1:7,6) = 'TRAC22','VTRAC22','WTRAC22','ADVyTr22','ADVrTr22','DFrITr22','KPPgTr22',
+#    filename(6) = 'P1Ptave',
+#   frequency(6) = 86400.,
+#  fields(1:7,7) = 'TRAC23','VTRAC23','WTRAC23','ADVyTr23','ADVrTr23','DFrITr23','KPPgTr23',
+#    filename(7) = 'P2Ptave',
+#   frequency(7) = 86400.,
+  fields(1:1,5) = 'PP',
+    filename(5) = 'PPtave',
+   frequency(5) = 86400.,
+#  fields(1:3,5) = 'TRAC03','TRAC22','TRAC23',
+#    filename(5) = 'PFe_snap',
+#   timePhase(5) = 0.,
+#   frequency(5) = -1296000.,
+#  fields(1:2,2) = 'WVEL','TRAC03',
+#    filename(2) = 'WFe1hr',
+#   timePhase(2) = 0.,
+#   frequency(2) = 3600.,i
+  fields(1:3,6) = 'WVEL','TRAC03','TRAC26',
+    filename(6) = 'Snap1H',
+   timePhase(6) = 0.,
+   frequency(6) = -3600.,
+#  fields(1:2,2) = 'WVEL','TRAC03',    
+#    filename(2) = 'WFe10mn',
+#   timePhase(2) = 0.,
+#   frequency(2) = 600.,
+ &
+
+ &DIAG_STATIS_PARMS
+ &

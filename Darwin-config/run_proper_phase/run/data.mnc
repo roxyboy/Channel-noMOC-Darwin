@@ -1,0 +1,9 @@
+# use MNC only for for monitor files 
+ &MNC_01
+ monitor_mnc=.TRUE.,
+ writegrid_mnc=.FALSE.,
+ pickup_read_mnc=.FALSE.,
+ pickup_write_mnc=.FALSE.,
+ timeave_mnc=.FALSE.,
+ snapshot_mnc=.FALSE.,
+ &

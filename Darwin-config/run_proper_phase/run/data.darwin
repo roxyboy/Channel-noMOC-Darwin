@@ -1,0 +1,10 @@
+ &DARWIN_FORCING
+  darwin_PARFile='par.bin',
+  darwin_ForcingPeriod=2592000.,
+  darwin_ForcingCycle=31104000.,
+  darwin_seed=11231,
+ &
+ &DIC_FORCING
+  DIC_windFile='',
+  dic_int1=0,
+ &
