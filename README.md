@@ -12,3 +12,5 @@ The [Darwin package used](/pkg/darwin) is not compatible with the most up-to-dat
 The config files to run the Darwin package are [here](/Darwin-config/code) and namelist files [here](/Darwin-config/run_proper_phase/run).
 
 Jupyter notebooks to generate the input files are [here](/Darwin-config/notebooks).
+
+The namelist file for GMRedi with the Visbeck closure and Ferrari et al. (2008) tapering is [here](/Darwin-config/GM-configs).
